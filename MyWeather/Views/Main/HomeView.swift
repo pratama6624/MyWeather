@@ -148,7 +148,7 @@ struct HomeView: View {
             Spacer()
         }
         .foregroundStyle(Color.white)
-        .padding(.vertical, 100)
+        .padding(.vertical, 90)
         .padding(.horizontal, 30)
         .frame(maxWidth: .infinity)
     }

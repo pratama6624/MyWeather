@@ -25,7 +25,7 @@ struct TabView: View {
                     tap.selectedTab = .home
                 } label: {
                     VStack {
-                        Image(systemName: "house.fill")
+                        Image(systemName: tap.selectedTab == .home ? "house.fill" : "house")
                             .frame(width: 70)
                     }
                 }
@@ -34,7 +34,7 @@ struct TabView: View {
                     tap.selectedTab = .locationSearch
                 } label: {
                     VStack {
-                        Image(systemName: "magnifyingglass")
+                        Image(systemName: tap.selectedTab == .locationSearch ? "sparkle.magnifyingglass" : "magnifyingglass")
                             .frame(width: 70)
                     }
                 }
@@ -43,7 +43,7 @@ struct TabView: View {
                     tap.selectedTab = .hourlyForecast
                 } label: {
                     VStack {
-                        Image(systemName: "cloud.sun.bolt")
+                        Image(systemName: tap.selectedTab == .hourlyForecast ? "cloud.sun.bolt.fill" : "cloud.sun.bolt")
                             .frame(width: 70)
                     }
                 }
@@ -52,7 +52,7 @@ struct TabView: View {
                     tap.selectedTab = .setting
                 } label: {
                     VStack {
-                        Image(systemName: "gearshape")
+                        Image(systemName: tap.selectedTab == .setting ? "gearshape.fill" : "gearshape")
                             .frame(width: 70)
                     }
                 }
@@ -62,6 +62,7 @@ struct TabView: View {
             .foregroundColor(Color.white)
         }
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
     }
 }
 

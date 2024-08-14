@@ -22,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		413E2B042C6C3E8E00DA0EB2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		41F8C7EC2C67B1B2002E32C9 /* MyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41F8C7EF2C67B1B2002E32C9 /* MyWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWeatherApp.swift; sourceTree = "<group>"; };
 		41F8C7F12C67B1B2002E32C9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +53,7 @@
 		41F8C7E32C67B1B2002E32C9 = {
 			isa = PBXGroup;
 			children = (
+				413E2B042C6C3E8E00DA0EB2 /* README.md */,
 				41F8C7EE2C67B1B2002E32C9 /* MyWeather */,
 				41F8C7ED2C67B1B2002E32C9 /* Products */,
 			);

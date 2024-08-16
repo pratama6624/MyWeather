@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TabView: View {
     @StateObject var tap = TabModel()
+    var weather: ResponseBody
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -67,5 +68,5 @@ struct TabView: View {
 }
 
 #Preview {
-    TabView()
+    TabView(weather: previewWeather)
 }

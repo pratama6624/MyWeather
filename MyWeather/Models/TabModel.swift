@@ -24,7 +24,7 @@ class TabModel: ObservableObject {
         var view: some View {
             switch selectedTab {
             case .home:
-                HomeView()
+                HomeView(weather: previewWeather)
             case .locationSearch:
                 LocationSearchView()
             case .hourlyForecast:

@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
+    var weather: ResponseBody
     var body: some View {
         VStack {
             VStack(spacing: 20) {
-                Text("San Fransisco")
+                Text(weather.name)
                     .font(.title2)
                     .bold()
                 
@@ -54,7 +55,7 @@ struct HomeView: View {
             HStack {
                 VStack {
                     Text("Temp")
-                    Text("32\u{00B0}")
+                    Text("\(weather.main.temp)\u{00B0}")
                 }
                 .font(.headline)
                 .frame(width: UIScreen.main.bounds.width / 4)
@@ -155,5 +156,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(weather: previewWeather)
 }

@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import CoreLocationUI
 
 struct WelcomeView: View {
+    @EnvironmentObject var locationManager: LocationManager
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -60,19 +63,28 @@ struct WelcomeView: View {
                             .padding(.vertical, 30)
                             .padding(.horizontal, 25)
                         
-                        NavigationLink(destination: TabView()) {
-                            Text("Get start")
-                                .font(.custom("Montserrat-SemiBold", size: 20))
-                                .foregroundStyle(Color.black)
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 18)
-                                .background(Color.yellow)
-                                .cornerRadius(10)
+//                        NavigationLink(destination: TabView()) {
+//                            Text("Get start")
+//                                .font(.custom("Montserrat-SemiBold", size: 20))
+//                                .foregroundStyle(Color.black)
+//                                .frame(maxWidth: .infinity)
+//                                .padding(.vertical, 18)
+//                                .background(Color.yellow)
+//                                .cornerRadius(10)
+//                        }
+                        
+                        LocationButton(.shareCurrentLocation) {
+                            locationManager.requestLocation()
                         }
+                        .cornerRadius(30)
+                        .symbolVariant(.fill)
+                        .foregroundStyle(Color.white)
                         
                     }
                     .foregroundColor(.white)
                     .padding(.horizontal, 30)
+                    
+                    Spacer()
                 }
                 .padding(.vertical, 50)
             }

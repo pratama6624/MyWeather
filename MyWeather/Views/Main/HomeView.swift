@@ -9,14 +9,21 @@ import SwiftUI
 
 struct HomeView: View {
     var weather: ResponseBody
+    @ObservedObject var viewModel = WeatherManager()
+    
     var body: some View {
         VStack {
             VStack(spacing: 20) {
-                Text(weather.name)
+                Text(viewModel.city)
                     .font(.title2)
                     .bold()
+                    .onAppear {
+                        Task {
+                            await viewModel.loadCityName(latitude: viewModel.latitude, longitude: viewModel.longitude)
+                        }
+                    }
                 
-                Text("May 20, 2024")
+                Text("Today, \(Date().formatted(.dateTime.month().day().hour().minute()))")
                     .font(.callout)
                     .padding(.bottom, 10)
                 
@@ -55,21 +62,21 @@ struct HomeView: View {
             HStack {
                 VStack {
                     Text("Temp")
-                    Text("\(weather.main.temp)\u{00B0}")
+                    Text("\(weather.currentConditions.temp.toCelciul().roundDouble())\u{00B0}C")
                 }
                 .font(.headline)
                 .frame(width: UIScreen.main.bounds.width / 4)
                 
                 VStack {
                     Text("Wind")
-                    Text("10Km/h")
+                    Text("\(weather.currentConditions.windspeed.roundDouble())m/s")
                 }
                 .font(.headline)
                 .frame(width: UIScreen.main.bounds.width / 4)
                 
                 VStack {
                     Text("Humidity")
-                    Text("75%")
+                    Text("\(weather.currentConditions.humidity.roundDouble())%")
                 }
                 .font(.headline)
                 .frame(width: UIScreen.main.bounds.width / 4)

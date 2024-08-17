@@ -12,6 +12,8 @@
 		413E2B0B2C6E4FFB00DA0EB2 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413E2B0A2C6E4FFB00DA0EB2 /* ModelData.swift */; };
 		413E2B0D2C6E504D00DA0EB2 /* WeatherData.json in Resources */ = {isa = PBXBuildFile; fileRef = 413E2B0C2C6E504D00DA0EB2 /* WeatherData.json */; };
 		413E2B0F2C6E55FF00DA0EB2 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413E2B0E2C6E55FF00DA0EB2 /* Extension.swift */; };
+		413E2B112C6FAB5C00DA0EB2 /* jakartaDummyWeather.json in Resources */ = {isa = PBXBuildFile; fileRef = 413E2B102C6FAB5C00DA0EB2 /* jakartaDummyWeather.json */; };
+		413E2B142C705F8200DA0EB2 /* OpenStreetMapExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413E2B132C705F8200DA0EB2 /* OpenStreetMapExtension.swift */; };
 		41F8C7F02C67B1B2002E32C9 /* MyWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F8C7EF2C67B1B2002E32C9 /* MyWeatherApp.swift */; };
 		41F8C7F22C67B1B2002E32C9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F8C7F12C67B1B2002E32C9 /* ContentView.swift */; };
 		41F8C7F42C67B1B4002E32C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41F8C7F32C67B1B4002E32C9 /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 		413E2B0A2C6E4FFB00DA0EB2 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		413E2B0C2C6E504D00DA0EB2 /* WeatherData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WeatherData.json; sourceTree = "<group>"; };
 		413E2B0E2C6E55FF00DA0EB2 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		413E2B102C6FAB5C00DA0EB2 /* jakartaDummyWeather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jakartaDummyWeather.json; sourceTree = "<group>"; };
+		413E2B132C705F8200DA0EB2 /* OpenStreetMapExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenStreetMapExtension.swift; sourceTree = "<group>"; };
 		41F8C7EC2C67B1B2002E32C9 /* MyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41F8C7EF2C67B1B2002E32C9 /* MyWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWeatherApp.swift; sourceTree = "<group>"; };
 		41F8C7F12C67B1B2002E32C9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,6 +73,15 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		413E2B122C705F4200DA0EB2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				413E2B0E2C6E55FF00DA0EB2 /* Extension.swift */,
+				413E2B132C705F8200DA0EB2 /* OpenStreetMapExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		41F8C7E32C67B1B2002E32C9 = {
 			isa = PBXGroup;
 			children = (
@@ -89,12 +102,12 @@
 		41F8C7EE2C67B1B2002E32C9 /* MyWeather */ = {
 			isa = PBXGroup;
 			children = (
+				413E2B122C705F4200DA0EB2 /* Extension */,
 				413E2B052C6CF4E200DA0EB2 /* Managers */,
 				41F8C8032C685684002E32C9 /* Info.plist */,
 				41F8C80F2C689837002E32C9 /* Models */,
 				41F8C7FD2C684D9F002E32C9 /* Views */,
 				41F8C7EF2C67B1B2002E32C9 /* MyWeatherApp.swift */,
-				413E2B0E2C6E55FF00DA0EB2 /* Extension.swift */,
 				41F8C7F12C67B1B2002E32C9 /* ContentView.swift */,
 				41F8C8122C6A4D88002E32C9 /* Montserrat-SemiBold.ttf */,
 				41F8C7F32C67B1B4002E32C9 /* Assets.xcassets */,
@@ -109,6 +122,7 @@
 				41F8C7F62C67B1B4002E32C9 /* Preview Assets.xcassets */,
 				413E2B0A2C6E4FFB00DA0EB2 /* ModelData.swift */,
 				413E2B0C2C6E504D00DA0EB2 /* WeatherData.json */,
+				413E2B102C6FAB5C00DA0EB2 /* jakartaDummyWeather.json */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -210,6 +224,7 @@
 			files = (
 				41F8C7F72C67B1B4002E32C9 /* Preview Assets.xcassets in Resources */,
 				41F8C8132C6A4D88002E32C9 /* Montserrat-SemiBold.ttf in Resources */,
+				413E2B112C6FAB5C00DA0EB2 /* jakartaDummyWeather.json in Resources */,
 				413E2B0D2C6E504D00DA0EB2 /* WeatherData.json in Resources */,
 				41F8C7F42C67B1B4002E32C9 /* Assets.xcassets in Resources */,
 			);
@@ -235,6 +250,7 @@
 				41F8C80E2C689658002E32C9 /* SettingView.swift in Sources */,
 				41F8C8082C689036002E32C9 /* HomeView.swift in Sources */,
 				41F8C7F02C67B1B2002E32C9 /* MyWeatherApp.swift in Sources */,
+				413E2B142C705F8200DA0EB2 /* OpenStreetMapExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

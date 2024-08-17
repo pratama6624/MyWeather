@@ -11,4 +11,8 @@ extension Double {
     func roundDouble() -> String {
         return String(format: "%.0f", self)
     }
+    
+    func toCelciul() -> Double {
+        return (self - 32) * 5 / 9
+    }
 }

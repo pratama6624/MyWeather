@@ -50,6 +50,7 @@ class WeatherManager: ObservableObject {
         
         let decodedData = try JSONDecoder().decode(ResponseBody.self, from: data)
         
+        print(decodedData)
         
         return decodedData
     }
@@ -116,7 +117,7 @@ class WeatherManager: ObservableObject {
 
 
 // Visual Crossing Response Body
-struct ResponseBody: Decodable {
+struct ResponseBody: Decodable, CustomDebugStringConvertible {
     var latitude: Double
     var longitude: Double
     var timezone: String
@@ -125,16 +126,30 @@ struct ResponseBody: Decodable {
     var description: String
     let days: [Day]
     
-    struct CurrentConditions: Decodable {
+    // MARK: - CurrentConditions
+    struct CurrentConditions: Decodable, CustomDebugStringConvertible {
         var temp: Double
         var feelslike: Double
         var humidity: Double
         var windspeed: Double
         var visibility: Double
         var conditions: String
+        
+        var debugDescription: String {
+            """
+            Current Conditions:
+            - Temp: \(temp)°C
+            - Feels Like: \(feelslike)°C
+            - Humidity: \(humidity)%
+            - Wind Speed: \(windspeed) m/s
+            - Visibility: \(visibility) km
+            - Conditions: \(conditions)
+            """
+        }
     }
     
-    struct Day: Decodable {
+    // MARK: - Day
+    struct Day: Decodable, CustomDebugStringConvertible {
         var datetime: String
         var datetimeEpoch: TimeInterval
         var tempmax: Double
@@ -149,7 +164,26 @@ struct ResponseBody: Decodable {
         var conditions: String
         var hours: [Hour]
         
-        struct Hour: Decodable {
+        var debugDescription: String {
+            """
+            Day (\(datetime)):
+                - Temp Max: \(tempmax)°C
+                - Temp Min: \(tempmin)°C
+                - Temp: \(temp)°C
+                - Feels Like Max: \(feelslikemax)°C
+                - Feels Like Min: \(feelslikemin)°C
+                - Feels Like: \(feelslike)°C
+                - Humidity: \(humidity)%
+                - Wind Speed: \(windspeed) m/s
+                - Visibility: \(visibility) km
+                - Conditions: \(conditions)
+                - Hours:
+              \(hours.map { $0.debugDescription }.joined(separator: "\n  "))
+            """
+        }
+        
+        // MARK: - Hour
+        struct Hour: Decodable, CustomDebugStringConvertible {
             var datetime: String
             var datetimeEpoch: TimeInterval
             var temp: Double
@@ -158,6 +192,35 @@ struct ResponseBody: Decodable {
             var windspeed: Double
             var visibility: Double
             var conditions: String
+            
+            var debugDescription: String {
+                """
+                    Hour (\(datetime)):
+                        - Temp: \(temp)°C
+                        - Feels Like: \(feelslike)°C
+                        - Humidity: \(humidity)%
+                        - Wind Speed: \(windspeed) m/s
+                        - Visibility: \(visibility) km
+                        - Conditions: \(conditions)
+                """
+            }
         }
     }
+    
+    // MARK: - ResponseBody Debug Description
+    var debugDescription: String {
+        """
+        ResponseBody:
+        - Latitude: \(latitude)
+        - Longitude: \(longitude)
+        - Timezone: \(timezone)
+        - Address: \(address)
+        - Description: \(description)
+        - Current Conditions:
+          \(currentConditions.debugDescription)
+        - Days:
+          \(days.map { $0.debugDescription }.joined(separator: "\n  "))
+        """
+    }
 }
+

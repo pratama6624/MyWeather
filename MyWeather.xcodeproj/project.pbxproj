@@ -14,6 +14,9 @@
 		413E2B0F2C6E55FF00DA0EB2 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413E2B0E2C6E55FF00DA0EB2 /* Extension.swift */; };
 		413E2B112C6FAB5C00DA0EB2 /* jakartaDummyWeather.json in Resources */ = {isa = PBXBuildFile; fileRef = 413E2B102C6FAB5C00DA0EB2 /* jakartaDummyWeather.json */; };
 		413E2B142C705F8200DA0EB2 /* OpenStreetMapExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413E2B132C705F8200DA0EB2 /* OpenStreetMapExtension.swift */; };
+		413E2B182C71923500DA0EB2 /* JSONSerializatiionPrettyPrintedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413E2B172C71923500DA0EB2 /* JSONSerializatiionPrettyPrintedExtension.swift */; };
+		413E2B1A2C71D74600DA0EB2 /* TimeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413E2B192C71D74600DA0EB2 /* TimeExtension.swift */; };
+		413E2B1D2C7252F200DA0EB2 /* WeatherScrollHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413E2B1C2C7252F200DA0EB2 /* WeatherScrollHelper.swift */; };
 		41F8C7F02C67B1B2002E32C9 /* MyWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F8C7EF2C67B1B2002E32C9 /* MyWeatherApp.swift */; };
 		41F8C7F22C67B1B2002E32C9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F8C7F12C67B1B2002E32C9 /* ContentView.swift */; };
 		41F8C7F42C67B1B4002E32C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41F8C7F32C67B1B4002E32C9 /* Assets.xcassets */; };
@@ -37,6 +40,9 @@
 		413E2B0E2C6E55FF00DA0EB2 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		413E2B102C6FAB5C00DA0EB2 /* jakartaDummyWeather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jakartaDummyWeather.json; sourceTree = "<group>"; };
 		413E2B132C705F8200DA0EB2 /* OpenStreetMapExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenStreetMapExtension.swift; sourceTree = "<group>"; };
+		413E2B172C71923500DA0EB2 /* JSONSerializatiionPrettyPrintedExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSerializatiionPrettyPrintedExtension.swift; sourceTree = "<group>"; };
+		413E2B192C71D74600DA0EB2 /* TimeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeExtension.swift; sourceTree = "<group>"; };
+		413E2B1C2C7252F200DA0EB2 /* WeatherScrollHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherScrollHelper.swift; sourceTree = "<group>"; };
 		41F8C7EC2C67B1B2002E32C9 /* MyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41F8C7EF2C67B1B2002E32C9 /* MyWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWeatherApp.swift; sourceTree = "<group>"; };
 		41F8C7F12C67B1B2002E32C9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,8 +84,18 @@
 			children = (
 				413E2B0E2C6E55FF00DA0EB2 /* Extension.swift */,
 				413E2B132C705F8200DA0EB2 /* OpenStreetMapExtension.swift */,
+				413E2B172C71923500DA0EB2 /* JSONSerializatiionPrettyPrintedExtension.swift */,
+				413E2B192C71D74600DA0EB2 /* TimeExtension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		413E2B1B2C7252C600DA0EB2 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				413E2B1C2C7252F200DA0EB2 /* WeatherScrollHelper.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		41F8C7E32C67B1B2002E32C9 = {
@@ -102,6 +118,7 @@
 		41F8C7EE2C67B1B2002E32C9 /* MyWeather */ = {
 			isa = PBXGroup;
 			children = (
+				413E2B1B2C7252C600DA0EB2 /* Helper */,
 				413E2B122C705F4200DA0EB2 /* Extension */,
 				413E2B052C6CF4E200DA0EB2 /* Managers */,
 				41F8C8032C685684002E32C9 /* Info.plist */,
@@ -246,10 +263,13 @@
 				41F8C8062C685E9F002E32C9 /* TabView.swift in Sources */,
 				413E2B092C6D844900DA0EB2 /* WeatherManager.swift in Sources */,
 				41F8C8002C684DD8002E32C9 /* WelcomeView.swift in Sources */,
+				413E2B1D2C7252F200DA0EB2 /* WeatherScrollHelper.swift in Sources */,
 				413E2B0F2C6E55FF00DA0EB2 /* Extension.swift in Sources */,
+				413E2B1A2C71D74600DA0EB2 /* TimeExtension.swift in Sources */,
 				41F8C80E2C689658002E32C9 /* SettingView.swift in Sources */,
 				41F8C8082C689036002E32C9 /* HomeView.swift in Sources */,
 				41F8C7F02C67B1B2002E32C9 /* MyWeatherApp.swift in Sources */,
+				413E2B182C71923500DA0EB2 /* JSONSerializatiionPrettyPrintedExtension.swift in Sources */,
 				413E2B142C705F8200DA0EB2 /* OpenStreetMapExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -98,62 +98,37 @@ struct HomeView: View {
             }
             .padding(.bottom, 20)
             
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 15) {
-                    HStack {
-                        HStack {
-                            Image("CloudIcon")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 50)
-                        }
-                        VStack(alignment: .leading) {
-                            Text("15.00")
-                            Text("32\u{00B0}")
-                        }
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 10)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                    
-                    HStack {
-                        HStack {
-                            Image("CloudIcon")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 50)
-                        }
-                        VStack(alignment: .leading) {
-                            Text("16.00")
-                            Text("32\u{00B0}")
+            ScrollViewReader { proxy in
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 15) {
+                        if let firstDay = weather.days.first {
+                            ForEach(firstDay.hours, id: \.datetimeEpoch) { hour in
+                                HStack {
+                                    HStack {
+                                        Image("CloudIcon")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 40)
+                                    }
+                                    VStack(alignment: .leading) {
+                                        Text(TimeExtension().convertEpochToHour(epoch: hour.datetimeEpoch))
+                                        Text("\(hour.temp.toCelciul().roundDouble())\u{00B0}C")
+                                    }
+                                }
+                                .padding(.horizontal, 15)
+                                .padding(.vertical, 10)
+                                .background(hour.datetimeEpoch <= WeatherScrollHelper.currentEpochTime ? Color.blue.opacity(0.3) : Color.blue)
+                                .cornerRadius(10)
+                                .id(hour.datetimeEpoch)
+                            }
                         }
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 10)
-                    .background(Color.blue.opacity(0.3))
-                    .cornerRadius(10)
-                    
-                    HStack {
-                        HStack {
-                            Image("CloudIcon")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 50)
-                        }
-                        VStack(alignment: .leading) {
-                            Text("14.00")
-                            Text("32\u{00B0}")
-                        }
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 10)
-                    .background(Color.blue.opacity(0.3))
-                    .cornerRadius(10)
                 }
+                .onAppear {
+                    WeatherScrollHelper.scrollToCurrentHour(proxy: proxy, weather: weather, currentEpochTime: WeatherScrollHelper.currentEpochTime)
+                }
+                .padding(.bottom, 30)
             }
-            
-            Spacer()
         }
         .foregroundStyle(Color.white)
         .padding(.vertical, 90)

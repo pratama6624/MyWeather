@@ -26,28 +26,6 @@ struct HomeView: View {
                 Text("Today, \(Date().formatted(.dateTime.month().day().hour().minute()))")
                     .font(.callout)
                     .padding(.bottom, 10)
-                
-                HStack {
-                    Button {
-                        
-                    } label: {
-                        Text("Forecast")
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 10)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                    
-                    Button {
-                        
-                    } label: {
-                        Text("Air Quality")
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 10)
-                    .background(Color.blue.opacity(0.3))
-                    .cornerRadius(10)
-                }
             }
             
             Spacer()
@@ -55,14 +33,24 @@ struct HomeView: View {
             Image("cloudrainy")
                 .resizable()
                 .scaledToFit()
-                .frame(width: UIScreen.main.bounds.width / 2)
+                .frame(width: UIScreen.main.bounds.width / 2.5)
+            
+            Spacer()
+            
+            HStack {
+                Text("\(weather.currentConditions.temp.toCelciul().roundDouble())\u{00B0}C")
+                    .font(.system(size: 50))
+                    .bold()
+            }
+            
+            Spacer()
             
             Spacer()
             
             HStack {
                 VStack {
-                    Text("Temp")
-                    Text("\(weather.currentConditions.temp.toCelciul().roundDouble())\u{00B0}C")
+                    Text("Feels")
+                    Text("\(weather.currentConditions.feelslike.toCelciul().roundDouble())\u{00B0}C")
                 }
                 .font(.headline)
                 .frame(width: UIScreen.main.bounds.width / 4)
@@ -88,50 +76,91 @@ struct HomeView: View {
             
             HStack {
                 Text("Today")
-                    .font(.title2)
+                    .font(.headline)
                 
                 Spacer()
                 
                 Text("View full report")
-                    .font(.title3)
+                    .font(.callout)
                     .foregroundStyle(Color.blue)
             }
-            .padding(.bottom, 20)
             
             ScrollViewReader { proxy in
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 15) {
                         if let firstDay = weather.days.first {
                             ForEach(firstDay.hours, id: \.datetimeEpoch) { hour in
-                                HStack {
+                                Button {
+                                    // Do something here
+                                } label: {
                                     HStack {
-                                        Image("CloudIcon")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 40)
+                                        VStack(alignment: .leading) {
+                                            HStack {
+                                                Text(TimeExtension().convertEpochToHour(epoch: hour.datetimeEpoch))
+                                                    .bold()
+                                                
+                                                Spacer()
+                                            }
+                                            
+                                            HStack(spacing: 20) {
+                                                Image("CloudIcon")                             .resizable()                                  .scaledToFit()                                    .frame(width: 60)
+                                                
+                                                VStack(alignment: .leading, spacing: 5) {
+                                                    HStack {
+                                                        Text("\(hour.temp.toCelciul().roundDouble())\u{00B0}C")
+                                                            .font(.title3)
+                                                            .bold()
+                                                    }
+                                                    HStack {
+                                                        Text("\(hour.uvindex) UV")
+                                                            .font(.callout)
+                                                            .padding(.trailing, 10)
+                                                        
+                                                        Image(systemName: "arrow.up")
+                                                            .resizable()
+                                                            .scaledToFit()
+                                                            .frame(height: 12)
+                                                        Text("\(hour.feelslike.toCelciul().roundDouble())\u{00B0}C")
+                                                            .font(.callout)
+                                                            .padding(.trailing, 10)
+                                                        
+                                                        Image(systemName: "drop.fill")
+                                                            .resizable()
+                                                            .scaledToFit()
+                                                            .frame(height: 12)
+                                                        Text("\(hour.humidity.roundDouble())%")
+                                                    }
+                                                }
+                                            }                                        }
                                     }
-                                    VStack(alignment: .leading) {
-                                        Text(TimeExtension().convertEpochToHour(epoch: hour.datetimeEpoch))
-                                        Text("\(hour.temp.toCelciul().roundDouble())\u{00B0}C")
-                                    }
+                                    .frame(width: UIScreen.main.bounds.width - 82)
+                                    .padding(.horizontal, 15)
+                                    .padding(.vertical, 10)
+                                    .background(hour.datetimeEpoch <= WeatherScrollHelper.currentEpochTime ? Color.blue.opacity(0.3) : Color.blue.opacity(0.7))
+                                    .cornerRadius(15)
+                                    .id(hour.datetimeEpoch)
                                 }
-                                .padding(.horizontal, 15)
-                                .padding(.vertical, 10)
-                                .background(hour.datetimeEpoch <= WeatherScrollHelper.currentEpochTime ? Color.blue.opacity(0.3) : Color.blue)
-                                .cornerRadius(10)
-                                .id(hour.datetimeEpoch)
+                                .containerRelativeFrame(.horizontal, count: 1, spacing: 15)
+                                .scrollTransition { content, phase in
+                                    content.opacity(phase.isIdentity ? 1.0 : 0.1)
+                                        .scaleEffect(x: phase.isIdentity ? 1.0 : 0.3, y: phase.isIdentity ? 1.0 : 0.3)
+                                        .offset(y: phase.isIdentity ? 0 : 100)
+                                }
                             }
                         }
                     }
+                    .scrollTargetLayout()
                 }
                 .onAppear {
                     WeatherScrollHelper.scrollToCurrentHour(proxy: proxy, weather: weather, currentEpochTime: WeatherScrollHelper.currentEpochTime)
                 }
                 .padding(.bottom, 30)
+                .contentMargins(16, for: .scrollContent)
+                .scrollTargetBehavior(.viewAligned)
             }
         }
         .foregroundStyle(Color.white)
-        .padding(.vertical, 90)
+        .padding(.vertical, 70)
         .padding(.horizontal, 30)
         .frame(maxWidth: .infinity)
     }

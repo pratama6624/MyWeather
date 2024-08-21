@@ -50,7 +50,7 @@ class WeatherManager: ObservableObject {
         
         let decodedData = try JSONDecoder().decode(ResponseBody.self, from: data)
         
-        print(decodedData)
+//        print(decodedData)
         
         return decodedData
     }
@@ -149,7 +149,8 @@ struct ResponseBody: Decodable, CustomDebugStringConvertible {
     }
     
     // MARK: - Day
-    struct Day: Decodable, CustomDebugStringConvertible {
+    struct Day: Decodable, CustomDebugStringConvertible, Identifiable {
+        var id: TimeInterval { datetimeEpoch }
         var datetime: String
         var datetimeEpoch: TimeInterval
         var tempmax: Double
@@ -183,7 +184,8 @@ struct ResponseBody: Decodable, CustomDebugStringConvertible {
         }
         
         // MARK: - Hour
-        struct Hour: Decodable, CustomDebugStringConvertible {
+        struct Hour: Decodable, CustomDebugStringConvertible, Identifiable {
+            var id: TimeInterval { datetimeEpoch }
             var datetime: String
             var datetimeEpoch: TimeInterval
             var temp: Double
@@ -192,6 +194,7 @@ struct ResponseBody: Decodable, CustomDebugStringConvertible {
             var windspeed: Double
             var visibility: Double
             var conditions: String
+            var uvindex: Int
             
             var debugDescription: String {
                 """
@@ -202,6 +205,7 @@ struct ResponseBody: Decodable, CustomDebugStringConvertible {
                         - Wind Speed: \(windspeed) m/s
                         - Visibility: \(visibility) km
                         - Conditions: \(conditions)
+                        - UV Index: \(uvindex) UV
                 """
             }
         }

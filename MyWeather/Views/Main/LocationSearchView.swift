@@ -88,7 +88,7 @@ struct LocationSearchView: View {
             Spacer()
         }
         .foregroundStyle(Color.white)
-        .padding(.vertical, 90)
+        .padding(.vertical, 70)
         .padding(.horizontal, 30)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }

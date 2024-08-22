@@ -119,7 +119,6 @@ struct HourlyForecastView: View {
 
                         Button {
                             selectedDay = day
-                            print(selectedDay?.datetime)
                         } label: {
                             HStack {
                                 VStack(alignment: .leading) {
@@ -156,7 +155,7 @@ struct HourlyForecastView: View {
             Spacer()
         }
         .popover(item: $selectedDay) { day in
-            DetailView()
+            DetailView(weather: (selectedDay ?? weather.days.first)!)
         }
         .foregroundStyle(Color.white)
         .padding(.vertical, 70)

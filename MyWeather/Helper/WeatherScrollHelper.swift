@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct WeatherScrollHelper {
-    static var currentEpochTime = Date().timeIntervalSince1970
+    static var currentEpochTime = Date().timeIntervalSince1970 - (5 * 60 * 60)
     
     static func scrollToCurrentHour(proxy: ScrollViewProxy, weather: ResponseBody, currentEpochTime: TimeInterval) {
         if let firstDay = weather.days.first {
@@ -21,6 +21,16 @@ struct WeatherScrollHelper {
                     print("Waktu di app: \(lastHour.datetimeEpoch)")
                     proxy.scrollTo(lastHour.datetimeEpoch, anchor: .leading)
                 }
+            }
+        }
+    }
+    
+    static func scrollToCurrentHour(proxy: ScrollViewProxy, weather: ResponseBody.Day, currentEpochTime: TimeInterval) {
+        if let currentHour = weather.hours.first(where: { $0.datetimeEpoch >= currentEpochTime}) {
+            proxy.scrollTo(currentHour.id, anchor: .leading)
+        } else {
+            if let lastHour = weather.hours.last {
+                proxy.scrollTo(lastHour.id, anchor: .leading)
             }
         }
     }

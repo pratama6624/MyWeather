@@ -48,7 +48,7 @@ struct LocationSearchView: View {
             
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVGrid(columns: columns) {
-                    ForEach(0..<6) { i in
+                    ForEach(0..<4) { i in
                         ZStack {
                             Rectangle()
                                 .foregroundStyle(Color.blue.opacity(0.5))
@@ -81,6 +81,23 @@ struct LocationSearchView: View {
                             }
                             .padding(.horizontal, 20)
                         }
+                    }
+                    
+                    ZStack {
+                        Rectangle()
+                            .foregroundStyle(Color.blue.opacity(0.5))
+                            .frame(width: UIScreen.main.bounds.width / 2 - 40, height: 140)
+                            .cornerRadius(20)
+                            .padding(.bottom, 10)
+                        
+                        VStack {
+                            Image(systemName: "plus")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30)
+                                .padding(.bottom, 10)
+                        }
+                        .padding(.horizontal, 20)
                     }
                 }
             }

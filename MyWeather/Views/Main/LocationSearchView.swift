@@ -187,20 +187,22 @@ struct LocationSearchView: View {
                             }
                         }
                         
-                        ForEach(citySearchViewModel.results, id: \.self) { city in
-                            HStack {
+                        withAnimation {
+                            ForEach(citySearchViewModel.results) { city in
                                 HStack {
-                                    Text(city)
-                                        .font(.callout)
-                                        .bold()
-                                    
-                                    Spacer()
+                                    HStack {
+                                        Text(city.display_name)
+                                            .font(.callout)
+                                            .bold()
+                                        
+                                        Spacer()
+                                    }
+                                    .padding(10)
+                                    .padding(.horizontal, 15)
+                                    .frame(maxWidth: .infinity)
+                                    .background(Color.blue.opacity(0.5))
+                                    .cornerRadius(10)
                                 }
-                                .padding(10)
-                                .padding(.horizontal, 15)
-                                .frame(maxWidth: .infinity)
-                                .background(Color.blue.opacity(0.5))
-                                .cornerRadius(10)
                             }
                         }
                     }

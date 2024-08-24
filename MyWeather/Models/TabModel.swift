@@ -26,7 +26,7 @@ class TabModel: ObservableObject {
             case .home:
                 HomeView(weather: previewWeather)
             case .locationSearch:
-                LocationSearchView()
+                LocationSearchView(weather: previewWeather)
             case .hourlyForecast:
                 HourlyForecastView(weather: previewWeather)
             case .setting:

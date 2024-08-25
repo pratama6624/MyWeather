@@ -23,20 +23,6 @@ class CitySearchViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
-//    
-//    private func searchCity(query: String) {
-//        guard query.count >= 3 else {
-//            results = []
-//            return
-//        }
-//        
-//        let allCities = ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "San Jose"]
-//        if query.isEmpty {
-//            results = []
-//        } else {
-//            results = allCities.filter { $0.lowercased().contains(query.lowercased()) }
-//        }
-//    }
     
     func searchForCity() {
         guard query.count >= 3, query != "Find city by name" else {

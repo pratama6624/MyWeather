@@ -17,8 +17,13 @@ class WeatherManager: ObservableObject {
     
     func getCurrentWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) async throws -> ResponseBody {
         
+        // Sample Jakarta Selatan
         self.latitude = -6.2146
         self.longitude = 106.8451
+        
+        // Sample SMK N 1 Giritontro
+//        self.latitude = -8.08117095
+//        self.longitude = 110.86730087840223
         
         // Open Weather API KEY
         let openWeatherApiKey : String = "3f791f28c2dbc76d12631dcfe118e1e5"

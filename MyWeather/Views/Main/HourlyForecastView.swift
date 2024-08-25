@@ -11,6 +11,7 @@ struct HourlyForecastView: View {
     var weather: ResponseBody
     @ObservedObject var viewModel = WeatherManager()
     @State private var selectedDay: ResponseBody.Day?
+    @State private var isSheetPresented = false
     
     var body: some View {
         VStack {
@@ -119,6 +120,7 @@ struct HourlyForecastView: View {
 
                         Button {
                             selectedDay = day
+                            isSheetPresented = true
                         } label: {
                             HStack {
                                 VStack(alignment: .leading) {
@@ -154,8 +156,9 @@ struct HourlyForecastView: View {
             
             Spacer()
         }
-        .popover(item: $selectedDay) { day in
+        .sheet(isPresented: $isSheetPresented) {
             DetailView(weather: (selectedDay ?? weather.days.first)!)
+                .presentationDetents([.fraction(0.65)])
         }
         .foregroundStyle(Color.white)
         .padding(.vertical, 70)

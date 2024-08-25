@@ -8,6 +8,7 @@
 import Foundation
 import CoreLocation
 
+// Open street map is an API that provides worldwide address data that can also be accessed for free
 extension CLLocationCoordinate2D {
     func getCityNameFromNominatim() async throws -> String? {
         let urlString = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=\(self.latitude)&lon=\(self.longitude)&zoom=18&addressdetails=1"

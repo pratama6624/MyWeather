@@ -19,25 +19,17 @@ struct DetailView: View {
             VStack {
                 VStack {
                     Text("\(TimeExtension().convertEpochToDayAndDate(epoch: weather.datetimeEpoch)) \(TimeExtension().convertEpochToDay(epoch: weather.datetimeEpoch))")
-                        .font(.title2)
+                        .font(.title3)
                         .bold()
                 }
-                .padding(.bottom, 30)
-                
-                Image("cloudrainy")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.width / 2.5)
                 
                 Spacer()
-                
-                HStack {
+                    
+                VStack {
                     Text("\(weather.temp.toCelciul().roundDouble())\u{00B0}C")
                         .font(.system(size: 50))
                         .bold()
-                }
-                
-                HStack {
+                    
                     Text(weather.conditions)
                 }
                 
@@ -97,7 +89,7 @@ struct DetailView: View {
                                                         Text("\(hour.uvindex) UV")
                                                             .font(.callout)
                                                             .padding(.trailing, 10)
-
+                                                        
                                                         Image(systemName: "arrow.up")
                                                             .resizable()
                                                             .scaledToFit()
@@ -105,7 +97,7 @@ struct DetailView: View {
                                                         Text("\(hour.feelslike.toCelciul().roundDouble())\u{00B0}C")
                                                             .font(.callout)
                                                             .padding(.trailing, 10)
-
+                                                        
                                                         Image(systemName: "drop.fill")
                                                             .resizable()
                                                             .scaledToFit()
@@ -113,7 +105,7 @@ struct DetailView: View {
                                                         Text("\(hour.humidity.roundDouble())%")
                                                     }
                                                 }
-                                            }   
+                                            }
                                             .padding(.bottom, 20)
                                             
                                             VStack(spacing: 10) {
@@ -121,20 +113,6 @@ struct DetailView: View {
                                                     Text("Wind speed")
                                                     Spacer()
                                                     Text("\(weather.windspeed.roundDouble())m/s")
-                                                }
-                                                .font(.callout)
-                                                
-                                                HStack {
-                                                    Text("Visibility")
-                                                    Spacer()
-                                                    Text("\(weather.visibility.roundDouble())")
-                                                }
-                                                .font(.callout)
-                                                
-                                                HStack {
-                                                    Text("Condition")
-                                                    Spacer()
-                                                    Text("\(weather.conditions)")
                                                 }
                                                 .font(.callout)
                                             }
@@ -160,17 +138,16 @@ struct DetailView: View {
                     .onAppear {
                         WeatherScrollHelper.scrollToCurrentHour(proxy: proxy, weather: weather, currentEpochTime: WeatherScrollHelper.currentEpochTime)
                     }
-                    .padding(.bottom, 30)
                     .contentMargins(16, for: .scrollContent)
                     .scrollTargetBehavior(.viewAligned)
                 }
             }
             .foregroundStyle(Color.white)
-            .padding(.vertical, 20)
+            .padding(.vertical, 40)
             .padding(.horizontal, 30)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea()
+        .frame(maxHeight: .infinity)
     }
 }
 

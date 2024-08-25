@@ -1,0 +1,132 @@
+{
+  "0": {
+    "place_id": "320151949054",
+    "osm_id": "6362934",
+    "osm_type": "relation",
+    "licence": "https://locationiq.com/attribution",
+    "lat": "-6.175247",
+    "lon": "106.8270488",
+    "boundingbox": [
+      "-6.3744575",
+      "-4.9993635",
+      "106.3146732",
+      "106.973975"
+    ],
+    "class": "place",
+    "type": "city",
+    "display_name": "Jakarta, Java, Indonesia",
+    "display_place": "Jakarta",
+    "display_address": "Java, Indonesia",
+    "address": {
+      "name": "Jakarta",
+      "state": "Java",
+      "country": "Indonesia",
+      "country_code": "id"
+    }
+  },
+  "1": {
+    "place_id": "321106030414",
+    "osm_id": "5802441",
+    "osm_type": "relation",
+    "licence": "https://locationiq.com/attribution",
+    "lat": "-6.26289085",
+    "lon": "106.88222895",
+    "boundingbox": [
+      "-6.3744575",
+      "-6.151338",
+      "106.8383412",
+      "106.973975"
+    ],
+    "class": "boundary",
+    "type": "administrative",
+    "display_name": "East Jakarta, Jakarta, Java, Indonesia",
+    "display_place": "East Jakarta",
+    "display_address": "Jakarta, Java, Indonesia",
+    "address": {
+      "name": "East Jakarta",
+      "city": "Jakarta",
+      "state": "Java",
+      "country": "Indonesia",
+      "country_code": "id"
+    }
+  },
+  "2": {
+    "place_id": "320626399603",
+    "osm_id": "7625977",
+    "osm_type": "relation",
+    "licence": "https://locationiq.com/attribution",
+    "lat": "-6.18233995",
+    "lon": "106.84287154",
+    "boundingbox": [
+      "-6.229282",
+      "-6.135334",
+      "106.7918334",
+      "106.8820391"
+    ],
+    "class": "boundary",
+    "type": "administrative",
+    "display_name": "Central Jakarta, Jakarta, Java, Indonesia",
+    "display_place": "Central Jakarta",
+    "display_address": "Jakarta, Java, Indonesia",
+    "address": {
+      "name": "Central Jakarta",
+      "city": "Jakarta",
+      "state": "Java",
+      "country": "Indonesia",
+      "country_code": "id"
+    }
+  },
+  "3": {
+    "place_id": "323992958823",
+    "osm_id": "5802438",
+    "osm_type": "relation",
+    "licence": "https://locationiq.com/attribution",
+    "lat": "-6.28381815",
+    "lon": "106.80486326",
+    "boundingbox": [
+      "-6.3650478",
+      "-6.202639",
+      "106.737454",
+      "106.8669728"
+    ],
+    "class": "boundary",
+    "type": "administrative",
+    "display_name": "South Jakarta, Jakarta, Java, Indonesia",
+    "display_place": "South Jakarta",
+    "display_address": "Jakarta, Java, Indonesia",
+    "address": {
+      "name": "South Jakarta",
+      "city": "Jakarta",
+      "state": "Java",
+      "country": "Indonesia",
+      "country_code": "id"
+    }
+  },
+  "4": {
+    "place_id": "321517156121",
+    "osm_id": "7626001",
+    "osm_type": "relation",
+    "licence": "https://locationiq.com/attribution",
+    "lat": "-6.161569",
+    "lon": "106.74389054",
+    "boundingbox": [
+      "-6.2274245",
+      "-6.09564",
+      "106.685589",
+      "106.828502"
+    ],
+    "class": "boundary",
+    "type": "administrative",
+    "display_name": "West Jakarta, Jakarta, Java, Indonesia",
+    "display_place": "West Jakarta",
+    "display_address": "Jakarta, Java, Indonesia",
+    "address": {
+      "name": "West Jakarta",
+      "city": "Jakarta",
+      "state": "Java",
+      "country": "Indonesia",
+      "country_code": "id"
+    }
+  }
+}
+

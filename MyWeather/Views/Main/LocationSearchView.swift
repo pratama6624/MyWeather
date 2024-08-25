@@ -72,10 +72,10 @@ struct LocationSearchView: View {
                             .padding(.horizontal, 20)
                         }
                     
-                        ForEach(0..<3) { i in
+                        ForEach(0..<2) { i in
                             ZStack {
                                 Rectangle()
-                                    .foregroundStyle(Color.blue.opacity(0.5))
+                                    .foregroundStyle(Color.blue.opacity(0.2))
                                     .frame(width: UIScreen.main.bounds.width / 2 - 40, height: 140)
                                     .cornerRadius(20)
                                     .padding(.bottom, 10)
@@ -141,8 +141,14 @@ struct LocationSearchView: View {
             
             // Pop up
             if showPopup {
-                Color.black.opacity(0.4)
+                Color.black.opacity(0.6)
                     .edgesIgnoringSafeArea(.all)
+                    .onTapGesture {
+                        withAnimation {
+                            showPopup = false
+                            citySearchViewModel.query = "Find city by name"
+                        }
+                    }
                 
                 VStack(spacing: 20) {
                     HStack {
@@ -207,23 +213,6 @@ struct LocationSearchView: View {
                         }
                     }
                     .foregroundStyle(Color.white)
-                    .padding(.bottom, 20)
-                    
-                    HStack {
-                        Button {
-                            withAnimation {
-                                showPopup = false
-                                citySearchViewModel.query = "Find city by name"
-                            }
-                        } label: {
-                            Image(systemName: "xmark")
-                        }
-                        .padding()
-                        .bold()
-                        .background(Color.blue.opacity(0.5))
-                        .foregroundStyle(.white)
-                        .cornerRadius(5)
-                    }
                 }
                 .padding()
                 .background(Color("Brand"))

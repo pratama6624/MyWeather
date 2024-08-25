@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct WeatherScrollHelper {
-    static var currentEpochTime = Date().timeIntervalSince1970 - (5 * 60 * 60)
+    static var currentEpochTime = Date().timeIntervalSince1970
     
     static func scrollToCurrentHour(proxy: ScrollViewProxy, weather: ResponseBody, currentEpochTime: TimeInterval) {
         if let firstDay = weather.days.first {

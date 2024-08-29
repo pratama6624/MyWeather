@@ -164,51 +164,96 @@ struct LocationSearchView: View {
                         }
                         .padding(20)
                         .frame(maxWidth: .infinity)
-                        .background(Color.white.opacity(0.5))
+                        .background(Color.white.opacity(0.7))
                         .cornerRadius(10)
                     }
                     
                     VStack {
-                        if citySearchViewModel.query.count == 0 || citySearchViewModel.query == "Find city by name" {
-                            HStack {
+//                        if citySearchViewModel.query.count == 0 || citySearchViewModel.query == "Find city by name" {
+//                            HStack {
+//                                HStack {
+//                                    Text(viewModel.city)
+//                                        .font(.callout)
+//                                        .bold()
+//                                        .onAppear {
+//                                            Task {
+//                                                await viewModel.loadCityName(latitude: viewModel.latitude, longitude: viewModel.longitude)
+//                                            }
+//                                        }
+//                                    
+//                                    Spacer()
+//                                    
+//                                    Image(systemName: "checkmark")
+//                                }
+//                                .padding(10)
+//                                .padding(.horizontal, 15)
+//                                .frame(maxWidth: .infinity)
+//                                .background(Color.blue.opacity(0.5))
+//                                .cornerRadius(10)
+//                            }
+//                        }
+                        
+                        if citySearchViewModel.results.isEmpty {
+                            VStack {
+                                Spacer()
+                                
                                 HStack {
-                                    Text(viewModel.city)
-                                        .font(.callout)
-                                        .bold()
-                                        .onAppear {
-                                            Task {
-                                                await viewModel.loadCityName(latitude: viewModel.latitude, longitude: viewModel.longitude)
+                                    Image(systemName: "sparkle.magnifyingglass")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 100)
+                                }
+                                .opacity(0.4)
+                                
+                                Spacer()
+                            }
+                            .frame(height: UIScreen.main.bounds.height / 2)
+                        } else {
+                            withAnimation {
+                                ScrollView(.vertical, showsIndicators: false) {
+                                    LazyVGrid(columns: columns) {
+                                        ForEach(citySearchViewModel.results) { city in
+                                            ZStack {
+                                                Rectangle()
+                                                    .foregroundStyle(Color.blue.opacity(0.5))
+                                                    .frame(width: UIScreen.main.bounds.width / 2 - 40, height: 140)
+                                                    .cornerRadius(20)
+                                                    .padding(.bottom, 10)
+                                                
+                                                VStack {
+                                                    HStack {
+                                                        VStack(alignment:. leading, spacing: 10) {
+                                                            Text("\(weather.currentConditions.temp.toCelciul().roundDouble())\u{00B0}C")
+                                                            Text("Cloudy")
+                                                                .font(.callout)
+                                                        }
+                                                        
+                                                        Spacer()
+                                                        
+                                                        Image("cloudrainy")
+                                                            .resizable()
+                                                            .scaledToFit()
+                                                            .frame(width: 50)
+                                                    }
+                                                    .padding(.bottom, 10)
+                                                    
+                                                    HStack {
+                                                        Text(viewModel.city)
+                                                            .font(.headline)
+                                                            .onAppear {
+                                                                Task {
+                                                                    await viewModel.loadCityName(latitude: viewModel.latitude, longitude: viewModel.longitude)
+                                                                }
+                                                            }
+                                                        Spacer()
+                                                    }
+                                                }
+                                                .padding(.horizontal, 20)
                                             }
                                         }
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "checkmark")
-                                }
-                                .padding(10)
-                                .padding(.horizontal, 15)
-                                .frame(maxWidth: .infinity)
-                                .background(Color.blue.opacity(0.5))
-                                .cornerRadius(10)
-                            }
-                        }
-                        
-                        withAnimation {
-                            ForEach(citySearchViewModel.results) { city in
-                                HStack {
-                                    HStack {
-                                        Text(city.display_name)
-                                            .font(.callout)
-                                            .bold()
-                                        
-                                        Spacer()
                                     }
-                                    .padding(10)
-                                    .padding(.horizontal, 15)
-                                    .frame(maxWidth: .infinity)
-                                    .background(Color.blue.opacity(0.5))
-                                    .cornerRadius(10)
                                 }
+                                .frame(height: UIScreen.main.bounds.height / 2)
                             }
                         }
                     }

@@ -15,6 +15,12 @@ class WeatherManager: ObservableObject {
     @Published var longitude: Double = 106.8451
     @Published var city: String = "Loading..."
     
+    // Open Weather API KEY
+    private let openWeatherApiKey : String = "3f791f28c2dbc76d12631dcfe118e1e5"
+    
+    // Visual Crossing API KEY
+    private let visualCrossingApiKey: String = "M95HDNXPUE5K9R655SKLL3UC2"
+    
     func getCurrentWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) async throws -> ResponseBody {
         
         // Sample Jakarta Selatan
@@ -24,12 +30,6 @@ class WeatherManager: ObservableObject {
         // Sample SMK N 1 Giritontro
 //        self.latitude = -8.08117095
 //        self.longitude = 110.86730087840223
-        
-        // Open Weather API KEY
-        let openWeatherApiKey : String = "3f791f28c2dbc76d12631dcfe118e1e5"
-        
-        // Visual Crossing API KEY
-        let visualCrossingApiKey: String = "M95HDNXPUE5K9R655SKLL3UC2"
         
         // URL Request Open Weather
         guard let _ = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=\(openWeatherApiKey)&units=metric") else { fatalError("Missing URL")}
@@ -76,6 +76,24 @@ class WeatherManager: ObservableObject {
                 self.city = "Error fetching city: \(error)"
             }
         }
+    }
+    
+    func getMultipleWeather(multipleLocation: String) async throws -> ResponseMultipleWeather {
+        guard let urlMultipleRequest = URL(string: "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timelinemulti?key=\(visualCrossingApiKey)&locations=\(multipleLocation)") else { fatalError("Missing URL")}
+        
+        let urlRequest = URLRequest(url: urlMultipleRequest)
+        
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            fatalError("Error while fetching data")
+        }
+        
+        let decodeData = try JSONDecoder().decode(ResponseMultipleWeather.self, from: data)
+        
+        print(decodeData)
+        
+        return decodeData
     }
 }
 
@@ -230,6 +248,64 @@ struct ResponseBody: Decodable, CustomDebugStringConvertible {
         - Days:
           \(days.map { $0.debugDescription }.joined(separator: "\n  "))
         """
+    }
+}
+
+struct ResponseMultipleWeather: Decodable {
+    var locations: [ResponseLocation]
+    
+    struct ResponseLocation: Decodable, CustomDebugStringConvertible {
+        var latitude: Double
+        var longitude: Double
+        var timezone: String
+        var address: String
+        let days: [Day]
+        
+        // MARK: - Day
+        struct Day: Decodable, CustomDebugStringConvertible, Identifiable {
+            var id: TimeInterval { datetimeEpoch }
+            var datetime: String
+            var datetimeEpoch: TimeInterval
+            var tempmax: Double
+            var tempmin: Double
+            var temp: Double
+            var feelslikemax: Double
+            var feelslikemin: Double
+            var feelslike: Double
+            var humidity: Double
+            var windspeed: Double
+            var visibility: Double
+            var conditions: String
+            
+            var debugDescription: String {
+                """
+                Day (\(datetime)):
+                    - Temp Max: \(tempmax)°C
+                    - Temp Min: \(tempmin)°C
+                    - Temp: \(temp)°C
+                    - Feels Like Max: \(feelslikemax)°C
+                    - Feels Like Min: \(feelslikemin)°C
+                    - Feels Like: \(feelslike)°C
+                    - Humidity: \(humidity)%
+                    - Wind Speed: \(windspeed) m/s
+                    - Visibility: \(visibility) km
+                    - Conditions: \(conditions)
+                """
+            }
+        }
+        
+        // MARK: - ResponseBody Debug Description
+        var debugDescription: String {
+            """
+            ResponseBody:
+            - Latitude: \(latitude)
+            - Longitude: \(longitude)
+            - Timezone: \(timezone)
+            - Address: \(address)
+            - Days:
+              \(days.map { $0.debugDescription }.joined(separator: "\n  "))
+            """
+        }
     }
 }
 

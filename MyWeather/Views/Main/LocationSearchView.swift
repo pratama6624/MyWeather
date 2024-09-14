@@ -76,7 +76,7 @@ struct LocationSearchView: View {
                             ZStack {
                                 Rectangle()
                                     .foregroundStyle(Color.blue.opacity(0.2))
-                                    .frame(width: UIScreen.main.bounds.width / 2 - 40, height: 140)
+                                    .frame(width: UIScreen.main.bounds.width / 2 - 40)
                                     .cornerRadius(20)
                                     .padding(.bottom, 10)
                                 
@@ -216,9 +216,8 @@ struct LocationSearchView: View {
                                             ZStack {
                                                 Rectangle()
                                                     .foregroundStyle(Color.blue.opacity(0.5))
-                                                    .frame(width: UIScreen.main.bounds.width / 2 - 40, height: 140)
+                                                    .frame(width: UIScreen.main.bounds.width / 2 - 40)
                                                     .cornerRadius(20)
-                                                    .padding(.bottom, 10)
                                                 
                                                 VStack {
                                                     HStack {
@@ -238,17 +237,13 @@ struct LocationSearchView: View {
                                                     .padding(.bottom, 10)
                                                     
                                                     HStack {
-                                                        Text(viewModel.city)
+                                                        Text(city.detailAddress)
                                                             .font(.headline)
-                                                            .onAppear {
-                                                                Task {
-                                                                    await viewModel.loadCityName(latitude: viewModel.latitude, longitude: viewModel.longitude)
-                                                                }
-                                                            }
                                                         Spacer()
                                                     }
                                                 }
                                                 .padding(.horizontal, 20)
+                                                .padding(.vertical, 20)
                                             }
                                         }
                                     }

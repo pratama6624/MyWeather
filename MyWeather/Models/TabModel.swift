@@ -16,7 +16,7 @@ enum TabType: String, Codable {
 }
 
 class TabModel: ObservableObject {
-    @Published var selectedTab: TabType = .home
+    @Published var selectedTab: TabType = .locationSearch
     
     func contentViewForTab() -> AnyView {
         

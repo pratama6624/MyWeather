@@ -20,6 +20,7 @@
 		413E2B1F2C72C6BB00DA0EB2 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413E2B1E2C72C6BB00DA0EB2 /* DetailView.swift */; };
 		413E2B212C79854500DA0EB2 /* CitySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413E2B202C79854500DA0EB2 /* CitySearchViewModel.swift */; };
 		413E2B232C7AEBC500DA0EB2 /* LocationIQDataDummyRealTimeSearch.json in Resources */ = {isa = PBXBuildFile; fileRef = 413E2B222C7AEBC400DA0EB2 /* LocationIQDataDummyRealTimeSearch.json */; };
+		41E2B8CE2C82EF5A00A0F324 /* MultipleWeatherDummy.json in Resources */ = {isa = PBXBuildFile; fileRef = 41E2B8CD2C82EF5A00A0F324 /* MultipleWeatherDummy.json */; };
 		41F8C7F02C67B1B2002E32C9 /* MyWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F8C7EF2C67B1B2002E32C9 /* MyWeatherApp.swift */; };
 		41F8C7F22C67B1B2002E32C9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F8C7F12C67B1B2002E32C9 /* ContentView.swift */; };
 		41F8C7F42C67B1B4002E32C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41F8C7F32C67B1B4002E32C9 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		413E2B1E2C72C6BB00DA0EB2 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		413E2B202C79854500DA0EB2 /* CitySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchViewModel.swift; sourceTree = "<group>"; };
 		413E2B222C7AEBC400DA0EB2 /* LocationIQDataDummyRealTimeSearch.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LocationIQDataDummyRealTimeSearch.json; sourceTree = "<group>"; };
+		41E2B8CD2C82EF5A00A0F324 /* MultipleWeatherDummy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MultipleWeatherDummy.json; sourceTree = "<group>"; };
 		41F8C7EC2C67B1B2002E32C9 /* MyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41F8C7EF2C67B1B2002E32C9 /* MyWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWeatherApp.swift; sourceTree = "<group>"; };
 		41F8C7F12C67B1B2002E32C9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				413E2B0A2C6E4FFB00DA0EB2 /* ModelData.swift */,
 				413E2B0C2C6E504D00DA0EB2 /* WeatherData.json */,
 				413E2B102C6FAB5C00DA0EB2 /* jakartaDummyWeather.json */,
+				41E2B8CD2C82EF5A00A0F324 /* MultipleWeatherDummy.json */,
 				413E2B222C7AEBC400DA0EB2 /* LocationIQDataDummyRealTimeSearch.json */,
 			);
 			path = "Preview Content";
@@ -250,6 +253,7 @@
 			files = (
 				41F8C7F72C67B1B4002E32C9 /* Preview Assets.xcassets in Resources */,
 				41F8C8132C6A4D88002E32C9 /* Montserrat-SemiBold.ttf in Resources */,
+				41E2B8CE2C82EF5A00A0F324 /* MultipleWeatherDummy.json in Resources */,
 				413E2B232C7AEBC500DA0EB2 /* LocationIQDataDummyRealTimeSearch.json in Resources */,
 				413E2B112C6FAB5C00DA0EB2 /* jakartaDummyWeather.json in Resources */,
 				413E2B0D2C6E504D00DA0EB2 /* WeatherData.json in Resources */,

@@ -2,6 +2,10 @@
 
 Welcome to **My Weather**, your go-to iOS app for reliable and accurate weather forecasts. Built using Swift and SwiftUI, My Weather provides a seamless and intuitive user experience, giving you all the weather information you need right at your fingertips.
 
+## UI Sample Overview
+
+<img width="750" alt="Image" src="https://github.com/user-attachments/assets/b0a480a3-08b7-4d58-a961-bf16c15811da" />
+
 ## Features
 
 - **Current Weather Conditions:**
@@ -18,19 +22,18 @@ Welcome to **My Weather**, your go-to iOS app for reliable and accurate weather 
 
 ## Technologies Used
 
-- **Swift**: The powerful and intuitive programming language for iOS development.
-- **SwiftUI**: A declarative framework for building user interfaces on Apple platforms.
-- **Core Location**: To get the user's current location and provide accurate weather data.
-- **Networking**: Using URLSession to fetch data from a weather API.
-- **MVVM Architecture**: The app is structured using the Model-View-ViewModel pattern for better code organization and maintainability.
+- **Swift**
+- **SwiftUI**
+- **Vapor Backend (Swift)**
+- **Open Weather API**
+- **MVVM Architecture**
 
-## Installation
+## Author
+**Kukuh Nur Pratama**  
+iOS Developer and Apple Ecosystem Enthusiast  
+GitHub: [pratama6624](https://github.com/pratama6624)  
+LinkedIn: [linkedin.com/in/kukuhpratama](https://www.linkedin.com/in/kukuhpratama)
 
-To run the app locally on your iOS device or simulator:
+---
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/yourusername/myweather.git
-   ```
-
-## Preview on IPhone 15 Pro
+"Good design makes complex systems feel effortless to use."
